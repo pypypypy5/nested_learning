@@ -27,10 +27,12 @@ Use this checklist for package distribution releases (separate from checkpoint/a
 - [ ] Re-run validation checks listed above.
 - [ ] Promote release notes for `vX.Y.Z`.
 - [ ] PyPI publish workflow succeeds via Trusted Publishing (OIDC).
-- [ ] GitHub Release published with:
-  - [ ] changelog summary
-  - [ ] migration notes (if any)
-  - [ ] links to docs and compatibility matrix
+- [ ] GitHub Release workflow creates/updates the tag release entry in the Releases tab.
+- [ ] Release assets attached by automation:
+  - [ ] wheel (`.whl`)
+  - [ ] source tarball (`.tar.gz`)
+  - [ ] `SHA256SUMS.txt`
+- [ ] Release notes include migration notes (if any) and links to compatibility/versioning docs.
 
 ## Post-Release
 

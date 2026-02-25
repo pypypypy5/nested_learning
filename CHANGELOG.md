@@ -21,6 +21,7 @@ All notable changes to this project will be documented here. The format loosely 
 - Boundary-state training-loop regression coverage (`tests/test_boundary_state_training_loop.py`) plus eval-loader/metadata roundtrip coverage (`tests/test_checkpoint_metadata_and_eval_loaders.py`).
 - `scripts/checks/check_data_script_help.sh` to guarantee `scripts/data/* --help` exits cleanly; wired into CI.
 - Markdown anchor verification in `scripts/checks/verify_docs_refs.py` with dedicated unit coverage.
+- Tag release automation now creates GitHub Release entries with attached wheel/sdist artifacts plus `SHA256SUMS.txt`.
 
 ### Changed
 - README / compliance / streaming docs now reflect boundary-target mode, optional KV-cache carry, and explicit scope boundaries.

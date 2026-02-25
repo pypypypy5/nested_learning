@@ -77,3 +77,54 @@ jobs:
         with:
           packages-dir: dist/
 
+  publish-github-release:
+    needs:
+      - build
+      - publish-testpypi
+      - publish-pypi
+    if: |
+      always() &&
+      needs.build.result == 'success' &&
+      (needs.publish-testpypi.result == 'success' || needs.publish-testpypi.result == 'skipped') &&
+      (needs.publish-pypi.result == 'success' || needs.publish-pypi.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download dist artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Generate checksums
+        run: |
+          cd dist
+          sha256sum * > SHA256SUMS.txt
+
+      - name: Build release preamble
+        run: |
+          cat > release_preamble.md <<EOF
+          Package release for \`${GITHUB_REF_NAME}\`.
+
+          Install:
+          \`\`\`bash
+          pip install nested-learning==${GITHUB_REF_NAME#v}
+          \`\`\`
+
+          Included assets:
+          - source distribution (`.tar.gz`)
+          - wheel (`.whl`)
+          - \`SHA256SUMS.txt\` checksums
+
+          For compatibility/support details:
+          - https://github.com/${GITHUB_REPOSITORY}/blob/main/docs/COMPATIBILITY_MATRIX.md
+          - https://github.com/${GITHUB_REPOSITORY}/blob/main/docs/VERSIONING_POLICY.md
+          EOF
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          prerelease: ${{ contains(github.ref_name, 'rc') }}
+          generate_release_notes: true
+          body_path: release_preamble.md
+          files: |
+            dist/*

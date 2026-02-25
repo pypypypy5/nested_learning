@@ -317,6 +317,10 @@ Before tagging or announcing a new checkpoint, work through:
 - `docs/PACKAGE_RELEASE_CHECKLIST.md` (package/GitHub/PyPI release flow)
 - `docs/PYPI_TRUSTED_PUBLISHING.md` (one-time OIDC setup for TestPyPI/PyPI)
 
+Tag pushes (`v*`) automatically publish:
+- PyPI/TestPyPI package artifacts (via Trusted Publishing), and
+- a GitHub Release entry with wheel, sdist, and `SHA256SUMS.txt` in the Releases tab.
+
 For versioning semantics and breaking-change expectations, see `docs/VERSIONING_POLICY.md`.
 
 For reproducibility bug reports, use `docs/BUG_REPORT_CHECKLIST.md`.

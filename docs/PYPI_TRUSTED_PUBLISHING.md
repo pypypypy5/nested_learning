@@ -2,6 +2,7 @@
 
 This repository ships `.github/workflows/release.yml` for OIDC-based publishing.
 Use this checklist once per repository to activate it.
+The same workflow also publishes a GitHub Release entry (Releases tab) with wheel/sdist/checksum assets for each tag.
 
 ## 1) Configure TestPyPI trusted publisher
 
@@ -50,3 +51,9 @@ No long-lived PyPI API tokens are required.
    - `python -m nested_learning doctor --json`
    - `python -m nested_learning smoke --config-name pilot_smoke --device cpu --batch-size 1 --seq-len 8`
 
+## 6) Verify GitHub release assets
+
+After the tag workflow completes, confirm the Releases tab entry for that tag contains:
+- `nested_learning-<version>-py3-none-any.whl`
+- `nested_learning-<version>.tar.gz`
+- `SHA256SUMS.txt`
