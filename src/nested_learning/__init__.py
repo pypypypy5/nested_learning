@@ -2,6 +2,18 @@
 
 from importlib.metadata import PackageNotFoundError, version
 
+from .api import (  # noqa: F401
+    build_dataloader,
+    build_model,
+    build_model_from_cfg,
+    build_optimizer,
+    generate,
+    load_checkpoint,
+    next_token_loss,
+    run_training_loop,
+    save_checkpoint,
+    train_step,
+)
 from .levels import LevelClock, LevelSpec  # noqa: F401
 
 try:
@@ -9,4 +21,18 @@ try:
 except PackageNotFoundError:  # pragma: no cover - editable/local source tree
     __version__ = "0.2.0"
 
-__all__ = ["LevelClock", "LevelSpec", "__version__"]
+__all__ = [
+    "LevelClock",
+    "LevelSpec",
+    "build_dataloader",
+    "build_model",
+    "build_model_from_cfg",
+    "build_optimizer",
+    "generate",
+    "load_checkpoint",
+    "next_token_loss",
+    "run_training_loop",
+    "save_checkpoint",
+    "train_step",
+    "__version__",
+]

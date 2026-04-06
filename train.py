@@ -11,7 +11,7 @@ from nested_learning.training import run_training_loop, unwrap_config
 def main(cfg: DictConfig) -> None:
     cfg = unwrap_config(cfg)
     device = resolve_device(cfg.train.device)
-    run_training_loop(cfg, device=device, distributed=False)
+    run_training_loop(cfg, device=device)
 
 
 if __name__ == "__main__":
