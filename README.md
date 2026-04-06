@@ -67,3 +67,4 @@ out = generate(model, prompt, max_new_tokens=8)
 - Distributed launchers, eval harnesses, release automation, and project-management layers were removed.
 - `training.py` is now a small local train loop rather than a full experiment orchestrator.
 - The remaining configs are only there to build and run the models easily while you modify architecture code directly.
+- High-level module structure and development rules are documented in `docs/PROJECT.md` and `docs/DEVELOPMENT.md`.
