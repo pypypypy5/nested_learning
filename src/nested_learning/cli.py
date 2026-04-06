@@ -208,7 +208,7 @@ def audit(
     config_name: Annotated[
         str,
         typer.Option("--config-name", "-c", help="Hydra config name to audit."),
-    ] = "pilot_paper_faithful",
+    ] = "pilot",
     override: Annotated[
         list[str] | None,
         typer.Option("--override", "-O", help="Hydra override(s), may be passed multiple times."),
