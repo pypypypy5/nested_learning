@@ -4,7 +4,8 @@ import hydra
 from omegaconf import DictConfig
 
 from nested_learning.device import resolve_device
-from nested_learning.training import run_training_loop, unwrap_config
+from nested_learning.factory import unwrap_config
+from nested_learning.trainer import run_training_loop
 
 
 @hydra.main(config_path="configs", config_name="pilot", version_base=None)

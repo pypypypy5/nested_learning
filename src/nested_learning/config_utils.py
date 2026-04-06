@@ -9,7 +9,7 @@ from hydra import compose, initialize_config_dir
 from hydra.core.global_hydra import GlobalHydra
 from omegaconf import DictConfig
 
-from .training import unwrap_config
+from .factory import unwrap_config
 
 
 def find_repo_root(start: Path | None = None) -> Path | None:

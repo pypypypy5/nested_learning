@@ -8,14 +8,12 @@ import torch
 import typer
 from omegaconf import OmegaConf
 
+from .checkpoint import load_checkpoint
 from .config_utils import compose_config
 from .device import resolve_device
-from .training import (
-    build_model_from_cfg,
-    generate,
-    load_checkpoint,
-    run_training_loop,
-)
+from .factory import build_model_from_cfg
+from .inference import generate
+from .trainer import run_training_loop
 
 app = typer.Typer(
     add_completion=False,
